@@ -13,7 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Run a one-line script
+      - name: Check Ansible Version
         run: ansible --version
+
+      - name: Test Inventory
+        run: ansible -i aws_ec2.yml --private-key ansible-key  -m ping  all
 
 
