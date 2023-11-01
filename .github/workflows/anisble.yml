@@ -32,6 +32,6 @@ jobs:
           chmod 400 ansible-key
 
       - name: Run Playbook
-        run: ansible-playbook -i aws_ec2.yml  --private-key ansible-key main.yaml -u ec2-user -b 
+        run: ansible-playbook -i aws_ec2.yml  --private-key ansible-key main.yml -u ec2-user -b 
 
 
