@@ -35,6 +35,6 @@ jobs:
           chmod 400 ansible-key
 
       - name: Test Inventory
-        run: ansible -i aws_ec2.yml --private-key ansible-key  -m ping  all
+        run: ansible -i aws_ec2.yml --private-key ansible-key  -m ping  all -u ec2-user
 
 
