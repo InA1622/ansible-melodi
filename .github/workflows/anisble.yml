@@ -19,6 +19,11 @@ jobs:
       - name: Check Ansible Version
         run: ansible --version
 
+      - name: Install boto3, botocore
+        run: |
+          . /opt/pipx/venvs/ansible-core/bin/activate
+          /opt/pipx/venvs/ansible-core/bin/python -m pip install boto3 botocore
+
       - name: Test Inventory
         run: ansible -i aws_ec2.yml --private-key ansible-key  -m ping  all
 
