@@ -21,9 +21,6 @@ jobs:
       # Checkout/Clone Repo
       - uses: actions/checkout@v3
 
-      - name: Check Ansible Version
-        run: ansible --version
-
       - name: Install boto3, botocore
         run: |
           . /opt/pipx/venvs/ansible-core/bin/activate
@@ -34,7 +31,7 @@ jobs:
           echo "${{ secrets.ANSIBLE_SSH_KEY }}" > ansible-key
           chmod 400 ansible-key
 
-      - name: Test Inventory
-        run: ansible -i aws_ec2.yml --private-key ansible-key  -m ping  all -u ec2-user
+      - name: Run Playbook
+        run: ansible-playbook -i aws_ec2.yml  --private-key ansible-key main.yaml -u ec2-user -b 
 
 
