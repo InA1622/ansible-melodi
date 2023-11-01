@@ -12,6 +12,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      ANSIBLE_HOST_KEY_CHECKING: False
+      AWS_ACCESS_KEY_ID: ${{ secret.AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secret. AWS_SECRET_KEY }}
+
     steps:
       # Checkout/Clone Repo
       - uses: actions/checkout@v3
